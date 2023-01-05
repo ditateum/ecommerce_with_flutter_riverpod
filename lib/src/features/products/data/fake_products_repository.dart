@@ -42,3 +42,8 @@ final productsListFutureProvider = FutureProvider<List<Product>>((ref) {
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.fetchProductsList();
 });
+
+final productRepository = StreamProvider.family<Product?, String>((ref, id) {
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.watchProduct(id);
+});
